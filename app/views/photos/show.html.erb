@@ -1,0 +1,17 @@
+<div class="text-center row black-border-row" style="padding: 30px">
+	<div class="container">
+		<%= image_tag @photo.image.url, alt: @photo.user.last_name %>
+
+		<h3><%= @photo.comments %></h3>
+
+		<p><strong>Submitted by:</strong> <%= @photo.user.first_name %></p>
+
+		<%= link_to 'Edit', edit_photo_path(@photo) %> | <%= link_to 'Back', photos_path %>
+	</div> <!-- container -->
+</div> <!-- row -->
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".footer").removeClass("top-shadow-inset");
+  });
+</script>

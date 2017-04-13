@@ -1,0 +1,48 @@
+<div class="hero-image-row">
+    <div class="hero-image-outer text-center">
+        <div class="hero-image-inner text-center">
+            <%= image_tag "polaris_8.jpg", class: "hero-image", alt: "Asphalt road with clouds." %>
+        </div> <!-- hero-image-inner -->
+    </div> <!-- hero-image-inner -->
+</div> <!-- row -->
+
+<div class="overlap-hero-image">
+    <div class="index-text row">
+        <% if current_user.admin %>
+            <h2>Admin Dashboard</h2>
+        <% else %>
+            <h2>My Account</h2>
+        <% end %>
+    </div> <!-- index text row -->
+</div> <!-- overlap hero image -->
+
+
+<div class="text-center header-row row background-white" style="padding-top: 30px">
+    <p>
+        <small><%= @user.first_name %> <%= @user.last_name %> | <%= @user.email %> | </strong><%= @user.phone %></small><br>
+        <%= link_to "Edit My Information", edit_user_registration_path %> | <%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %><br>
+    </p>
+</div> <!-- centered header -->
+
+<div class="row bp50 background-white">
+    <div class="container">
+        <% if current_user.admin %>
+            <%= render 'gallery_approvals' %>
+
+
+
+
+        <% else %>
+
+
+
+
+
+        <% end %>
+    </div> <!-- page container -->
+</div> <!-- white row -->
+
+
+
+
+

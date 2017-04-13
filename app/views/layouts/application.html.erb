@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Aloop Offroad</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="theme-color" content="#ffffff">
+
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Roboto:400,900" rel="stylesheet">
+</head>
+
+<body>
+
+
+<div class="cart-text cart-text-row row text-right">
+  <p>
+    <% if current_user && current_user.admin %>
+        <%= link_to "Admin Dashboard", user_path(current_user) %>
+    <% elsif current_user %>
+        <%= link_to "My Account", user_path(current_user) %>
+    <% else %>
+        <%= link_to "Login", new_user_session_path %>
+    <% end %>
+  </p>
+</div>
+
+<%= image_tag "metal_footer_background.jpg", class: "bg" %>
+
+                
+
+<!-- MENU GOES HERE -->
+<div id="main-nav" class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+          <%= link_to root_path, class: "navbar-brand" do %>
+            <%= image_tag "masterlogoSQ.png", style: "margin: -50px 0 0 20px; height: 120px" %>
+          <% end %>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse navbar-menubuilder">
+            <ul class="nav navbar-nav navbar-left">
+                <li><%= link_to home_kits_path do %>
+                  <p class="inner">Kits</p>
+                <% end %></li>
+
+                <li><%= link_to photos_path do %>
+                  <p class="inner">Gallery</p>
+                <% end %></li>
+
+                <li><%= link_to products_path do %>
+                  <p class="inner">Store</p>
+                <% end %></li>
+
+                <li><%= link_to home_info_path do %>
+                  <p class="inner">Info</p>
+                <% end %></li>
+
+                <li><%= link_to home_export_path do %>
+                  <p class="inner">Export</p>
+                <% end %></li>
+
+                <% if current_user && current_user.admin %>
+
+                  <li><%= link_to contacts_path do %>
+                    <p class="inner">Messages</p>
+                  <% end %></li>
+
+                <% else %>
+
+                  <li><%= link_to new_contact_path do %>
+                    <p class="inner">Contact</p>
+                  <% end %></li>
+
+                <% end %>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="main-nav-background"></div>
+
+<div class="flash-notice-area">
+  <% if flash[:notice] %>
+    <div class="alert alert-success">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <%= flash[:notice] %>
+    </div>
+  <% elsif flash.now[:alert] %>
+    <div class="alert alert-danger">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <%= flash.now[:alert] %>
+    </div>
+  <% elsif flash[:alert] %>
+    <div class="alert alert-warning">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+</div> <!-- flash notice area -->
+
+  
+<%= yield %>
+
+<footer class="footer top-shadow-inset">
+  <div class="row text-center footer-stripe">
+    <h1>Aloop Offroad</h1>
+    <h4>Unique Performance Prducts</h4>
+  </div> <!-- title -->
+
+  <div class="row tri-row">
+    <div class="col-sm-4">
+      <h3 class="text-center">Questions</h3>
+      <p>If you really, really have to talk to a human being, then call Pete on his cell phone (<a href="tel:1-303-550-2582">+1 303-550-2582</a>) and leave a message.</p>
+      <p>(He's the closest thing to a human being that we have here).</p>
+      <p>Pete will get back to you as soon as possible, usually on the same day you call.</p>
+    </div> <!-- triple thingy one -->
+
+    <div class="row visible-xs">
+      <hr class="col-xs-6 col-xs-push-3">
+    </div>
+    
+    <div class="col-sm-4">
+      <h3 class="text-center">Contact Aloop</h3>
+      <p>We might not keep regular office hours, but your business is still very important to us.</p>
+      <p>Please contact us by postal service, <a href="mailto:sales@aloop.com">email</a>. We will attempt to respond to all inquiries within 24 hours.</p>
+      <p>We are located in the USA Mountain Time Zone (GMT-7hrs).</p>
+    </div> <!-- triple thingy one -->
+
+    <div class="row visible-xs">
+      <hr class="col-xs-6 col-xs-push-3">
+    </div>
+
+    <div class="col-sm-4">
+      <h3 class="text-center">Overseas Orders</h3>
+      <p>Overseas orders are no problem!</p>
+      <p>We've sold thousands of our Aloop 4SMX kits to customers in over 40 countries! Most shipments are sent via US Mail Global Express Mail, and can arrive in under 1 week, no matter where in the world you live.</p>
+    </div> <!-- triple thingy one -->
+  </div> <!-- triple thingy row -->
+
+  <div class="row text-center footer-bottom">
+    <p><a href="mailto:sales@aloop.com">sales@aloop.com</a>
+    <span class="hidden-xs">  |  </span><br class="visible-xs">
+    PO Box 412, Sedalia, CO 80135, USA
+    <span class="hidden-xs">  |  </span><br class="visible-xs">
+    <a href="www.aloop.com">www.aloop.com</a></p>
+  </div> <!-- title -->
+
+
+</footer>
+
+</body>
+</html>

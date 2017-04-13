@@ -1,0 +1,28 @@
+<div class="blue-box" style="margin-top: 30px">
+	<h3 class="text-center">Want to brag about the awesome improvements to your bike? Submit your picture and/or story here. Once we see it, we'll share it with the world.</h3>
+
+	<%= simple_form_for @photo, html: { multipart: true } do |f| %>
+		<%= f.error_notification %>
+
+		<div class="form-inputs">
+			<div class="form-group">
+				<%= f.input :image %>
+			</div> <!-- form-group -->
+
+			<div class="form-group">
+	          <%= f.label "Which product is this?" %><br>
+	          <%= f.select :kit, options_for_select([['XR250/XR400' ,'kit_1'], ['XR600', 'kit_2'], ['SuperMotard and XR650L', 'kit_3']]), class: "form-control" %>
+	        </div> <!-- form group -->
+
+			<div class="form-group">
+				<%= f.label :comments %>
+				<%= f.text_area :comments, class: "form-control" %>
+			</div> <!-- form group -->
+		</div>
+
+		<div class="form-actions text-center">
+			<%= f.submit "Share Your Photo", class: "btn" %><br>
+			<%= link_to 'Back', photos_path %>
+		</div>
+	<% end %>
+</div> <!-- blue box -->
