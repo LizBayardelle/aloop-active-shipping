@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
 
   # GET /products
   def index
+    @order_item = current_order.order_items.new
     if params[:tag]
       @products = Product.tagged_with(params[:tag])
     else

@@ -1,0 +1,14 @@
+<h2 class="text-center">Your Shopping Cart <%= number_with_precision(current_order.total, precision: 2) %></h2>
+
+<div class="product-row black-border-row row" style="margin-bottom: 60px">
+  <div class="container">
+    <div class="shopping-cart">
+      <%= render "shopping_cart" %>
+    </div>
+
+    <div class="checkout-calculations">
+      <%= render "checkout_calculations" %>
+    </div>
+
+  </div> <!-- page container -->
+</div> <!-- product row -->

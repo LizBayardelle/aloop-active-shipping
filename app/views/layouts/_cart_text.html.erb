@@ -1,0 +1,12 @@
+<div class="cart-text cart-text-row row text-right">
+  <p>
+    <%= link_to "#{current_order.order_items.size} Items in Cart ( #{number_to_currency current_order.subtotal} )", cart_path %>  |  
+    <% if current_user && current_user.admin %>
+        <%= link_to "Admin Dashboard", user_path(current_user) %>
+    <% elsif current_user %>
+        <%= link_to "My Account", user_path(current_user) %>
+    <% else %>
+        <%= link_to "Login", new_user_session_path %>
+    <% end %>
+  </p>
+</div>

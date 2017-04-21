@@ -21,21 +21,11 @@
 <body>
 
 
-<div class="cart-text cart-text-row row text-right">
-  <p>
-    <% if current_user && current_user.admin %>
-        <%= link_to "Admin Dashboard", user_path(current_user) %>
-    <% elsif current_user %>
-        <%= link_to "My Account", user_path(current_user) %>
-    <% else %>
-        <%= link_to "Login", new_user_session_path %>
-    <% end %>
-  </p>
-</div>
+<%= render 'layouts/cart_text' %>
 
 <%= image_tag "metal_footer_background.jpg", class: "bg" %>
 
-                
+
 
 <!-- MENU GOES HERE -->
 <div id="main-nav" class="navbar navbar-default navbar-static-top" role="navigation">
@@ -108,7 +98,7 @@
   <% end %>
 </div> <!-- flash notice area -->
 
-  
+
 <%= yield %>
 
 <footer class="footer top-shadow-inset">
@@ -128,7 +118,7 @@
     <div class="row visible-xs">
       <hr class="col-xs-6 col-xs-push-3">
     </div>
-    
+
     <div class="col-sm-4">
       <h3 class="text-center">Contact Aloop</h3>
       <p>We might not keep regular office hours, but your business is still very important to us.</p>

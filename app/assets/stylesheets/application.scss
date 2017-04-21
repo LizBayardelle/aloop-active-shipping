@@ -104,6 +104,10 @@ a:focus, a:active { outline: none !important; }
 .form-group { text-align: left; }
 .linkish { color: $color-blue; }
 
+@media screen and (max-width: 768px) {
+	.center-mobile { text-align: center !important; margin: auto}
+}
+
 textarea:focus,
 input[type="text"]:focus,
 input[type="password"]:focus,
@@ -119,7 +123,7 @@ input[type="url"]:focus,
 input[type="search"]:focus,
 input[type="tel"]:focus,
 input[type="color"]:focus,
-.uneditable-input:focus {   
+.uneditable-input:focus {
   border-color: rgba(0,29,215, 0.8);
   box-shadow: 0 1px 1px rgba(0,29,215, 0.075) inset, 0 0 8px rgba(0,29,215, 0.6);
   outline: 0 none;
@@ -215,11 +219,11 @@ img.bg {
   /* Set rules to fill background */
   min-height: 100%;
   min-width: 1024px;
-	
+
   /* Set up proportionate scaling */
   width: 100%;
   height: auto;
-	
+
   /* Set up positioning */
   position: fixed;
   top: 0;
@@ -653,8 +657,8 @@ th {
 }
 
 .sticky-note-text {
-	display: inline-block; 
-	position: relative; 
+	display: inline-block;
+	position: relative;
 	vertical-align: middle;
 	width: 97%;
 }
@@ -838,7 +842,7 @@ Kits Home Page
 	-webkit-text-stroke: 1px rgba(0,0,0,0.1);
    	text-shadow:
        2px 2px 0 #000,
-     -1px -1px 0 #000,  
+     -1px -1px 0 #000,
       1px -1px 0 #000,
       -1px 1px 0 #000,
        1px 1px 0 #000;
@@ -1010,7 +1014,7 @@ Hero Images
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	color: white; 
+	color: white;
 	margin: 300px 0px 0 0px;
 	padding: 15px 30px 15px 30px;
 	background-color: $color-transparent-black;
@@ -1109,12 +1113,12 @@ Cart
 */
 
 input[type=submit].submit-as-text {
-    padding: 0; 
-    background: none; 
+    padding: 0;
+    background: none;
     border: none;
     cursor: pointer;
     -webkit-border-radius: none;
-    border-radius: none; 
+    border-radius: none;
     color: $color-blue;
     margin: 0;
 }
@@ -1125,7 +1129,7 @@ input[type=submit].submit-as-text {
 
 .choice-box .ion {
 	margin-right: 8px;
-	margin-left: 8px;
+	margin-left: 15px;
 }
 
 .choice-box:hover {
@@ -1134,7 +1138,7 @@ input[type=submit].submit-as-text {
 	cursor: pointer;
 }
 
-.active {
+.choice-box.active {
 	color: $color-blue !important;
 	font-weight: bold;
 }
@@ -1191,22 +1195,22 @@ slideRight
 
 .slideRight{
 	animation-name: slideRight;
-	-webkit-animation-name: slideRight;	
+	-webkit-animation-name: slideRight;
 
-	animation-duration: 1s;	
+	animation-duration: 1s;
 	-webkit-animation-duration: 1s;
 
-	animation-timing-function: ease-in-out;	
-	-webkit-animation-timing-function: ease-in-out;		
+	animation-timing-function: ease-in-out;
+	-webkit-animation-timing-function: ease-in-out;
 
-	visibility: visible !important;	
+	visibility: visible !important;
 }
 
 @keyframes slideRight {
 	0% { transform: translateX(-150%); }
 	50%{ transform: translateX(8%); }
 	65%{ transform: translateX(-4%); }
-	100% { transform: translateX(0%); }	
+	100% { transform: translateX(0%); }
 }
 
 @-webkit-keyframes slideRight {

@@ -1,0 +1,85 @@
+<div class="col-xs-9">
+  <div class="stepTax">
+    <h3>Do you live in Colorado?</h3>
+    <div class="choiceYesCO choice-box"><h4><i class="icon choice-yes-co icon-choice ion-ios-circle-outline"></i>Yes, I live in Colorado.</h4></div>
+    <div class="choiceNoCO choice-box"><h4><i class="icon choice-no-co icon-choice ion-ios-circle-outline"></i>No, I don't live in Colorado.</h4></div>
+    <div class="btn submitTax">See Shipping Options</div>
+  </div>
+  <div class="stepShipping hidden">
+    <h3>Shipping Options Go Here</h3>
+    <p>For now all shipping is free!</p>
+    <div class="btn submitShipping">Calculate Total</div>
+  </div>
+  <div class="stepTotal hidden">
+    <h3>You're ready to checkout!</h3>
+    <div class="btn submitTotal">Checkout</div>
+  </div>
+</div> <!-- col -->
+
+<div class="col-xs-3 text-right">
+  <%= simple_form_for @order, html: { multipart: true } do |f| %>
+
+    <h4>Subtotal: $<%= number_with_precision(current_order.subtotal, precision: 2) %></h4>
+    <%= f.hidden_field :subtotal, id: "hfSubtotal" %>
+
+    <h4 class="hidden fieldTax"></h4>
+    <%= f.hidden_field :tax, id: "hfTax" %>
+
+    <h4 class="hidden fieldShipping">Shipping: $</h4>
+    <%= f.hidden_field :shipping, id: "hfShipping" %>
+
+    <h4 class="hidden fieldTotal"><strong>Total: $</strong></h4>
+    <%= f.hidden_field :total, id: "hfTotal" %>
+
+  <% end %>
+</div> <!--  col -->
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    var $subtotal = $("#hfSubtotal").val();
+    $(".footer").removeClass("top-shadow-inset");
+    $(".choiceYesCO").click(function(){
+      $(".choice-box").removeClass("active");
+      $(".icon-choice").removeClass("ion-ios-checkmark-outline ion-ios-circle-outline")
+      $(".choice-no-co").addClass("ion-ios-circle-outline")
+      $(".choice-yes-co").addClass("ion-ios-checkmark-outline")
+      $(this).addClass("active");
+      var $tax = parseFloat($subtotal * .0463).toFixed(2);
+      $("#hfTax").val($tax);
+      $(".fieldTax").html("Tax: $" + $tax);
+    });
+    $(".choiceNoCO").click(function(){
+      $(".choice-box").removeClass("active");
+      $(".icon-choice").removeClass("ion-ios-checkmark-outline ion-ios-circle-outline")
+      $(".choice-no-co").addClass("ion-ios-checkmark-outline")
+      $(".choice-yes-co").addClass("ion-ios-circle-outline")
+      $(this).addClass("active");
+      var $tax = parseFloat(0.00).toFixed(2);
+      $("#hfTax").val($tax);
+      $(".fieldTax").html("Tax: $" + $tax);
+    });
+    $(".submitTax").click(function(){
+      $(".stepTax").addClass("hidden");
+      $(".stepShipping").removeClass("hidden");
+      $(".fieldTax").removeClass("hidden");
+    });
+    var $tax = $("#hfTax").val();
+    $(".submitShipping").click(function(){
+      var $shipping = parseFloat(0.00).toFixed(2);
+      $("#hfShipping").val($shipping);
+      $(".fieldShipping").html("Shipping: $" + $shipping);
+      var $total = parseFloat($subtotal + $tax + $shipping).toFixed(2);
+      $("#hfTotal").val($total);
+      $(".fieldTotal").html("<strong>Total: $" + $total + "</strong>");
+      $(".stepShipping").addClass("hidden");
+      $(".stepTotal").removeClass("hidden");
+      $(".fieldShipping").removeClass("hidden");
+      $(".fieldTotal").removeClass("hidden");
+    });
+    $(".submitTotal").click(function(){
+      $(".edit_order").submit();
+    });
+  });
+
+
+</script>
