@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   get 'tags/:tag', to: 'products#index', as: :tag
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy]
-  resources :orders, only: [:update, :edit]
+  resources :orders, only: [:update, :edit, :show]
 
   resources :contacts
   put "contacts/:id/archive" => "contacts#archive", as: "archive_contact"
@@ -35,5 +35,7 @@ Rails.application.routes.draw do
   resources :photos
   put "photos/:id/approve" => "photos#approve", as: "approve_photo"
   put "photos/:id/unapprove" => "photos#unapprove", as: "unapprove_photo"
+
+  resources :charges
 
 end

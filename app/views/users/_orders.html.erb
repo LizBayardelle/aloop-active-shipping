@@ -1,0 +1,28 @@
+<h2 class="small-h2">My Orders</h2>
+<p>Here are the details for all of your previous orders.</p>
+
+<% @orders.each do |order| %>
+  <table>
+    <tr>
+      <th>Order Number</th>
+      <th>Date Placed</th>
+      <th>Order Status</th>
+      <th>Amount</th>
+    </tr>
+    <tr>
+      <td><%= link_to order.id, order_path(order)%></td>
+      <td><%= order.date_placed.strftime('%a, %b %d, %G, %T %Z') %></td>
+      <td><%= order.order_status.name %></td>
+      <td><%= order.total %></td>
+    </tr>
+  </table>
+
+<% end %>
+
+
+<script type="text/javascript">
+  $('.open-popup-link').magnificPopup({
+    type:'inline',
+    midClick: true
+  });
+</script>

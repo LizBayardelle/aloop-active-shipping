@@ -63,12 +63,12 @@
       $(".stepShipping").removeClass("hidden");
       $(".fieldTax").removeClass("hidden");
     });
-    var $tax = $("#hfTax").val();
     $(".submitShipping").click(function(){
+      var $tax = $("#hfTax").val();
       var $shipping = parseFloat(0.00).toFixed(2);
       $("#hfShipping").val($shipping);
       $(".fieldShipping").html("Shipping: $" + $shipping);
-      var $total = parseFloat($subtotal + $tax + $shipping).toFixed(2);
+      var $total = (parseFloat($subtotal) + parseFloat($tax) + parseFloat($shipping)).toFixed(2);
       $("#hfTotal").val($total);
       $(".fieldTotal").html("<strong>Total: $" + $total + "</strong>");
       $(".stepShipping").addClass("hidden");
