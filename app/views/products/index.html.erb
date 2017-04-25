@@ -24,7 +24,11 @@
           <div class="text-box">
             <h3>4SMX for XR250/XR400</h3>
             <p>The most popular XR400 performance modification in the world!</p>
-            <div class="btn cta"><%= link_to "Product Info", kits_XR250_XR400_path %></div>
+            <%= form_for @order_item, remote: true do |f| %>
+    						<%= f.hidden_field :quantity, value: 1 %>
+    						<%= f.hidden_field :product_id, value: 1 %>
+    						<%= f.submit "Add to Cart", class: "btn cta", style: "margin-top: 0px" %><span class="hidden addedToCart" style="color: green; font-weight: bold; margin-left: 20px">Added to Cart</span>
+    				<% end %>
           </div> <!-- text-box -->
         </div> <!-- black box -->
       </div> <!-- column -->
@@ -37,7 +41,11 @@
           <div class="text-box">
             <h3>4SMX for XR600</h3>
             <p>The most popular XR400 performance modification in the world!</p>
-            <div class="btn cta"><%= link_to "Product Info", kits_XR600_path %></div>
+            <%= form_for @order_item, remote: true do |f| %>
+    						<%= f.hidden_field :quantity, value: 1 %>
+    						<%= f.hidden_field :product_id, value: 2 %>
+    						<%= f.submit "Add to Cart", class: "btn cta", style: "margin-top: 0px" %><span class="hidden addedToCart" style="color: green; font-weight: bold; margin-left: 20px">Added to Cart</span>
+    				<% end %>
           </div> <!-- text-box -->
         </div> <!-- black box -->
       </div> <!-- column -->
@@ -50,7 +58,11 @@
           <div class="text-box">
             <h3>4SMX for XR650L</h3>
             <p>The most popular XR400 performance modification in the world!</p>
-            <div class="btn cta"><%= link_to "Product Info", kits_XR650L_path %></div>
+            <%= form_for @order_item, remote: true do |f| %>
+    						<%= f.hidden_field :quantity, value: 1 %>
+    						<%= f.hidden_field :product_id, value: 3 %>
+    						<%= f.submit "Add to Cart", class: "btn cta", style: "margin-top: 0px" %><span class="hidden addedToCart" style="color: green; font-weight: bold; margin-left: 20px">Added to Cart</span>
+    				<% end %>
           </div> <!-- text-box -->
         </div> <!-- black box -->
       </div> <!-- column -->
@@ -80,7 +92,7 @@
         </div> <!-- tag cloud -->
       </div> <!-- tag cloud row -->
 
-      
+
     </div> <!-- row -->
   </div> <!-- column -->
 

@@ -6,7 +6,11 @@
 			<h2>4SMX Kit for XR600</h2>
 			<h3>This kit fits all XR600's from 1988 thru 2000.</h3>
 			<h3><strong>Get one for your&nbsp;bike&nbsp;today!</strong></h3>
-			<div class="btn cta"><%= link_to "Buy Now", products_path %></div>
+			<%= form_for @order_item, remote: true do |f| %>
+					<%= f.number_field :quantity, value: 1, class: "form-control", min: 1, style: "width: 80px; height: 40px; margin-right: 20px; margin-top: 5px; display: inline-block" %>
+					<%= f.hidden_field :product_id, value: 2 %>
+					<%= f.submit "Add to Cart", class: "btn cta", style: "margin-top: 0px" %><span class="hidden addedToCart" style="color: green; font-weight: bold; margin-left: 20px">Added to Cart</span>
+			<% end %>
 		</div> <!-- container -->
 	</div>
 
@@ -43,7 +47,11 @@
 
 			<div class="text-center">
 				<h1><strong>The ALOOP 4SMX XR600 seat/tank kit costs just $499 plus shipping and is available online.</strong></h1>
-				<div class="btn cta"><%= link_to "Buy Now", products_path %></div>
+				<%= form_for @order_item, remote: true do |f| %>
+						<%= f.number_field :quantity, value: 1, class: "form-control", min: 1, style: "width: 80px; height: 40px; margin-right: 20px; margin-top: 5px; display: inline-block" %>
+						<%= f.hidden_field :product_id, value: 2 %>
+						<%= f.submit "Add to Cart", class: "btn cta", style: "margin-top: 0px" %><span class="hidden addedToCart" style="color: green; font-weight: bold; margin-left: 20px">Added to Cart</span>
+				<% end %>
 			</div>
 
 			<div class="row">

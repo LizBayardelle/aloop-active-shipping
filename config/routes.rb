@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   get 'tags/:tag', to: 'products#index', as: :tag
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy]
-  resources :orders, only: [:update, :edit, :show]
+  resources :orders, only: [:update, :edit, :show, :create]
 
   resources :contacts
   put "contacts/:id/archive" => "contacts#archive", as: "archive_contact"

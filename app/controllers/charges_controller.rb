@@ -19,7 +19,8 @@ class ChargesController < ApplicationController
     end
     @order.update_attributes(order_status_id: 2)
     @order.update_attributes(date_placed: DateTime.now)
-    # current_order = nil
+    session[:order_id] = nil
+    
 
     charge = Stripe::Charge.create(
       :customer    => @user.stripe_customer_id,
