@@ -27,7 +27,7 @@
             <%= form_for @order_item, remote: true do |f| %>
     						<%= f.hidden_field :quantity, value: 1 %>
     						<%= f.hidden_field :product_id, value: 1 %>
-    						<%= f.submit "Add to Cart", class: "btn cta", style: "margin-top: 0px" %><span class="hidden addedToCart" style="color: green; font-weight: bold; margin-left: 20px">Added to Cart</span>
+    						<%= f.submit "Add to Cart", class: "btn cta btn1", style: "margin-top: 0px" %><span class="hidden addedToCart1" style="color: green; font-weight: bold; margin-left: 20px">Added to Cart</span>
     				<% end %>
           </div> <!-- text-box -->
         </div> <!-- black box -->
@@ -44,7 +44,7 @@
             <%= form_for @order_item, remote: true do |f| %>
     						<%= f.hidden_field :quantity, value: 1 %>
     						<%= f.hidden_field :product_id, value: 2 %>
-    						<%= f.submit "Add to Cart", class: "btn cta", style: "margin-top: 0px" %><span class="hidden addedToCart" style="color: green; font-weight: bold; margin-left: 20px">Added to Cart</span>
+    						<%= f.submit "Add to Cart", class: "btn cta btn2", style: "margin-top: 0px" %><span class="hidden addedToCart2" style="color: green; font-weight: bold; margin-left: 20px">Added to Cart</span>
     				<% end %>
           </div> <!-- text-box -->
         </div> <!-- black box -->
@@ -61,7 +61,7 @@
             <%= form_for @order_item, remote: true do |f| %>
     						<%= f.hidden_field :quantity, value: 1 %>
     						<%= f.hidden_field :product_id, value: 3 %>
-    						<%= f.submit "Add to Cart", class: "btn cta", style: "margin-top: 0px" %><span class="hidden addedToCart" style="color: green; font-weight: bold; margin-left: 20px">Added to Cart</span>
+    						<%= f.submit "Add to Cart", class: "btn cta btn3", style: "margin-top: 0px" %><span class="hidden addedToCart3" style="color: green; font-weight: bold; margin-left: 20px">Added to Cart</span>
     				<% end %>
           </div> <!-- text-box -->
         </div> <!-- black box -->
@@ -106,5 +106,14 @@
 <script type="text/javascript">
   $(document).ready(function(){
     $(".footer").removeClass("top-shadow-inset");
+    $(".btn1").click(function(){
+      $(".addedToCart1").removeClass("hidden");
+    });
+    $(".btn2").click(function(){
+      $(".addedToCart2").removeClass("hidden");
+    });
+    $(".btn3").click(function(){
+      $(".addedToCart3").removeClass("hidden");
+    });
   });
 </script>

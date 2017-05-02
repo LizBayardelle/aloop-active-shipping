@@ -3,6 +3,8 @@
     <h2 class="text-center bp50">Order #<%= @order.id %></h2>
     <h4><strong>Placed: </strong><%= @order.date_placed.strftime('%a, %b %d, %G, %T %Z') %></h4>
     <h4><strong>Status: </strong><%= @order.order_status.name %></h4>
+    <h4><strong>Total: </strong>$<%= number_with_precision(@order.total, precision: 2) %></h4>
+
 
     <div class="row">
       <hr class="col-xs-6 col-xs-push-3" />
@@ -12,14 +14,14 @@
     <table class="invisible-table bp50">
       <% @order.order_items.each do |item| %>
         <tr>
-          <td>$<%= item.product.price %></td>
-          <td><%= item.product.name %></td>
+          <td class="text-right">$<%= number_with_precision(item.product.price, precision: 2) %></td>
+          <td><strong><%= item.product.name %></strong></td>
         </tr>
       <% end %>
     </table>
 
     <div class="row text-center">
-      <%= link_to "Back to My Dashboard", user_path(current_user), class: "btn cta" %>
+      <%= link_to "Back to My Dashboard", user_path(current_user), class: "btn" %>
     </div> <!-- bottom buttons -->
   </div> <!-- container -->
 </div> <!-- white row -->

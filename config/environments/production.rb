@@ -22,8 +22,8 @@ Rails.application.configure do
   }
 
   # For Sendgrid
-  config.action_mailer.default_url_options = { host: 'rocky-inlet-68511.herokuapp.com' }
-  
+  config.action_mailer.default_url_options = { host: 'fathomless-wildwood-20717.herokuapp.com' }
+
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
