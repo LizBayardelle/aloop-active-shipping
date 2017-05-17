@@ -1,0 +1,70 @@
+<h2 class="text-center">Checkout</h2>
+
+<div class="product-row black-border-row row" style="margin-bottom: 60px">
+  <div class="container">
+
+    <div class="row text-center">
+      <div class="col-xs-3">
+        <h2>1</h2>
+        <p>Shipping<br class="visible-xs" /> Address</p>
+      </div> <!-- col -->
+      <div class="col-xs-3 inactive-step">
+        <h2>2</h2>
+        <p>Shipping<br class="visible-xs" /> Options</p>
+      </div> <!-- col -->
+      <div class="col-xs-3 inactive-step">
+        <h2>3</h2>
+        <p>Billing<br class="visible-xs" /> Information</p>
+      </div> <!-- col -->
+      <div class="col-xs-3 inactive-step">
+        <h2>4</h2>
+        <p>Order<br class="visible-xs" /> Confirmation</p>
+      </div> <!-- col -->
+    </div>
+
+    <div class="row">
+      <hr class="col-xs-6 col-xs-push-3" />
+    </div>
+
+    <div class="row text-center">
+      <h2 style="font-size: 35px">Shipping Address</h2>
+      <%= simple_form_for(@user, url: user_path(@user), html: { method: :put }) do |f| %>
+        <div class="form-inputs text-left">
+          <div class="form-group col-sm-6">
+            <%= f.label :street_address_1 %>
+            <%= f.text_field :street_address_1, class: "form-control" %>
+          </div>
+          <div class="form-group col-sm-6">
+            <%= f.label :street_address_2 %>
+            <%= f.text_field :street_address_2, class: "form-control" %>
+          </div>
+          <div class="form-group col-sm-6">
+            <%= f.label :city %>
+            <%= f.text_field :city, class: "form-control" %>
+          </div><div class="form-group col-sm-3 col-xs-6">
+            <%= f.label :state %>
+            <%= f.text_field :state, class: "form-control" %>
+          </div><div class="form-group col-sm-3 col-xs-6">
+            <%= f.label :zip %>
+            <%= f.text_field :zip, class: "form-control" %>
+          </div><div class="form-group col-sm-6">
+            <%= f.label :provence %>
+            <%= f.text_field :provence, class: "form-control" %>
+          </div><div class="form-group col-sm-6">
+            <%= f.label :country %>
+            <%= f.text_field :country, class: "form-control" %>
+          </div><div class="form-group">
+            <%= f.hidden_field :has_shipping, value: true %>
+          </div>
+        </div> <!-- form inputs -->
+          <%= f.button :submit, "Calculate Shipping" %>
+      <% end %>
+    </div> <!-- shipping row -->
+  </div> <!-- page container -->
+</div> <!-- product row -->
+
+<script>
+  $(document).ready(function(){
+    $(".footer").removeClass("top-shadow-inset");
+  });
+</script>

@@ -16,16 +16,40 @@
           <%= f.label :last_name %>
           <%= f.email_field :last_name, class: "form-control" %>
         </div>
-        <div class="form-group col-xs-12">
+        <div class="form-group col-sm-6">
           <%= f.label :email %>
           <%= f.email_field :email, required: false, autofocus: true, class: "form-control" %>
         </div>
-
-        <div class="form-group col-xs-12">
+        <div class="form-group col-sm-6">
           <%= f.label :phone %>
           <%= f.text_field :phone, required: false, class: "form-control" %>
         </div>
-
+        <div class="form-group col-sm-6">
+          <%= f.label :street_address_1 %>
+          <%= f.text_field :street_address_1, class: "form-control" %>
+        </div>
+        <div class="form-group col-sm-6">
+          <%= f.label :street_address_2 %>
+          <%= f.text_field :street_address_2, class: "form-control" %>
+        </div>
+        <div class="form-group col-sm-6">
+          <%= f.label :city %>
+          <%= f.text_field :city, class: "form-control" %>
+        </div><div class="form-group col-sm-3 col-xs-6">
+          <%= f.label :state %>
+          <%= f.text_field :state, class: "form-control" %>
+        </div><div class="form-group col-sm-3 col-xs-6">
+          <%= f.label :zip %>
+          <%= f.text_field :zip, class: "form-control" %>
+        </div><div class="form-group col-sm-6">
+          <%= f.label :provence %>
+          <%= f.text_field :provence, class: "form-control" %>
+        </div><div class="form-group col-sm-6">
+          <%= f.label :country %>
+          <%= f.text_field :country, class: "form-control" %>
+        </div><div class="form-group">
+          <%= f.hidden_field :has_shipping, value: true %>
+        </div>
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
         <% end %>
@@ -36,7 +60,7 @@
           <p><small><em>We need your current password to confirm your changes.</em></small></p>
         </div>
 
-        <p class="text-center linkish" id="updatePasswordHeader">Update My Password</p>
+        <p class="linkish" id="updatePasswordHeader" style="height: 50px; margin-bottom: 40px">Update My Password</p>
         <div id="updatePasswordDiv" class="hidden">
           <div class="form-group col-xs-6">
             <%= f.label "Change Password" %>

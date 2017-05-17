@@ -1101,6 +1101,11 @@ Store
 	}
 }
 
+.inactive-step {
+	color: $color-silver;
+}
+
+
 
 
 
@@ -1143,7 +1148,13 @@ input[type=submit].submit-as-text {
 	font-weight: bold;
 }
 
+.block_radio_button_collection {
+  display: block;
+}
 
+.block_radio_button_collection input {
+  margin-right: 10px;
+}
 
 
 

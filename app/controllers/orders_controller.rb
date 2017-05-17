@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   def update
     @order = current_order
     if @order.update(order_params)
-      redirect_to new_charge_path
+      redirect_to charges_address_path
     else
       render :back
       flash[:notice] = "Something is amuck."
@@ -19,6 +19,6 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:subtotal, :tax, :shipping, :total, :order_status_id, :user_id, :date_placed)
+    params.require(:order).permit(:subtotal, :tax, :shipping, :total, :order_status_id, :user_id, :date_placed, :shipping_choice)
   end
 end

@@ -1,7 +1,31 @@
-<h2 class="text-center">Order Confirmation</h2>
+<h2 class="text-center">Checkout</h2>
 
 <div class="product-row black-border-row row" style="margin-bottom: 60px">
   <div class="container text-center">
+    <div class="row text-center">
+      <div class="col-xs-3 inactive-step">
+        <h2>1</h2>
+        <p>Shipping<br class="visible-xs" /> Address</p>
+      </div> <!-- col -->
+      <div class="col-xs-3 inactive-step">
+        <h2>2</h2>
+        <p>Shipping<br class="visible-xs" /> Options</p>
+      </div> <!-- col -->
+      <div class="col-xs-3 inactive-step">
+        <h2>3</h2>
+        <p>Billing<br class="visible-xs" /> Information</p>
+      </div> <!-- col -->
+      <div class="col-xs-3">
+        <h2>4</h2>
+        <p>Order<br class="visible-xs" /> Confirmation</p>
+      </div> <!-- col -->
+    </div>
+
+    <div class="row">
+      <hr class="col-xs-6 col-xs-push-3" />
+    </div>
+
+    <h2>Order Confirmation</h2>
     <h3>Your order has been placed!</h3>
     <p>To see this and all previous orders, go to your <%= link_to "dashboard", user_path(current_user) %>.</p>
   </div> <!-- page container -->

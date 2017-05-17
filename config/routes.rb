@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'orders/update'
 
   devise_for :users, :controllers => { registrations: 'registrations' }
-  resources :users, only: [:show]
+  resources :users, only: [:show, :update]
 
   get 'home/index'
   root 'home#index'
@@ -36,6 +36,8 @@ Rails.application.routes.draw do
   put "photos/:id/approve" => "photos#approve", as: "approve_photo"
   put "photos/:id/unapprove" => "photos#unapprove", as: "unapprove_photo"
 
-  resources :charges
-
+  resources :charges, only: [:new, :create]
+  get 'charges/address'
+  get 'charges/shipping'
+  post 'charges/update_order'
 end

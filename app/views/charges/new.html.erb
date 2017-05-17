@@ -2,24 +2,31 @@
 
 <div class="product-row black-border-row row" style="margin-bottom: 60px">
   <div class="container">
-    <%= form_tag charges_path do %>
-      <article>
-        <% if flash[:error].present? %>
-          <div id="error_explanation">
-            <p><%= flash[:error] %></p>
-          </div>
-        <% end %>
-        <label class="amount">
-          <span>Amount: $<%= number_with_precision( current_order.total, precision: 2 ) %></span>
-        </label>
-      </article>
+    <div class="row text-center">
+      <%= link_to charges_shipping_path do %><div class="col-xs-3 inactive-step">
+        <h2>1</h2>
+        <p>Shipping<br class="visible-xs" /> Address</p>
+      </div> <!-- col --><% end %>
+      <%= link_to charges_address_path do %><div class="col-xs-3 inactive-step">
+        <h2>2</h2>
+        <p>Shipping<br class="visible-xs" /> Options</p>
+      </div> <!-- col --><% end %>
+      <div class="col-xs-3">
+        <h2>3</h2>
+        <p>Billing<br class="visible-xs" /> Information</p>
+      </div> <!-- col -->
+      <div class="col-xs-3 inactive-step">
+        <h2>4</h2>
+        <p>Order<br class="visible-xs" /> Confirmation</p>
+      </div> <!-- col -->
+    </div>
 
-      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-              data-description="Aloop Order"
-              data-amount=<%= current_order.total * 100 %>
-              data-locale="auto"></script>
-    <% end %>
+    <div class="row">
+      <hr class="col-xs-6 col-xs-push-3" />
+    </div>
+
+  <div class="row">
+    <%= render "shipping" %>
   </div> <!-- page container -->
 </div> <!-- product row -->
 

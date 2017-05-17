@@ -14,7 +14,7 @@
           <td><%= link_to order.id, order_path(order)%></td>
           <td><%= order.date_placed.strftime('%a, %b %d, %G, %T %Z') %></td>
           <td><%= order.order_status.name %></td>
-          <td><%= number_with_precision(order.total, precision: 2) %></td>
+          <td><%= number_to_currency(order.total) %></td>
         </tr>
     <% end %>
   <% end %>

@@ -1,0 +1,60 @@
+<h2 class="text-center">Checkout</h2>
+
+<div class="product-row black-border-row row" style="margin-bottom: 60px">
+  <div class="container">
+
+    <div class="row text-center">
+      <%= link_to charges_shipping_path do %><div class="col-xs-3 inactive-step">
+        <h2>1</h2>
+        <p>Shipping<br class="visible-xs" /> Address</p>
+      </div> <!-- col --><% end %>
+      <div class="col-xs-3">
+        <h2>2</h2>
+        <p>Shipping<br class="visible-xs" /> Options</p>
+      </div> <!-- col -->
+      <div class="col-xs-3 inactive-step">
+        <h2>3</h2>
+        <p>Billing<br class="visible-xs" /> Information</p>
+      </div> <!-- col -->
+      <div class="col-xs-3 inactive-step">
+        <h2>4</h2>
+        <p>Order<br class="visible-xs" /> Confirmation</p>
+      </div> <!-- col -->
+    </div>
+
+    <div class="row">
+      <hr class="col-xs-6 col-xs-push-3" />
+    </div>
+
+    <div class="row text-center">
+      <h2 style="font-size: 35px">Shipping Options</h2>
+        <% shipping_choices = [] %>
+        <% @ups_rates.each do |rate| %>
+          <% choice = [] %>
+          <% choice << rate[1]/100 %>
+          <% choice << number_to_currency(rate[1]/100).to_s + " - " + rate[0].to_s %>
+          <% shipping_choices << choice %>
+        <% end %>
+      <%= simple_form_for @order, url: charges_update_order_path(:shipping), method: :post do |f| %>
+        <div class="row">
+          <div class="form-inputs text-left">
+            <div class="form-group col-sm-6">
+              <%= f.collection_radio_buttons :shipping, shipping_choices, :first, :last, item_wrapper_class: :block_radio_button_collection %>
+            </div>
+          </div> <!-- form inputs -->
+        </div> <!-- choices row -->
+        <div class="row">
+        <%= f.button :submit, "Calculate Shipping" %>
+      </div>
+      <% end %>
+    </div> <!-- shipping row -->
+
+
+  </div> <!-- page container -->
+</div> <!-- product row -->
+
+<script>
+$(document).ready(function(){
+  $(".footer").removeClass("top-shadow-inset");
+});
+</script>

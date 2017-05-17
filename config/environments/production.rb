@@ -22,7 +22,7 @@ Rails.application.configure do
   }
 
   # For Sendgrid
-  config.action_mailer.default_url_options = { host: 'fathomless-wildwood-20717.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'aloop-offroad.herokuapp.com' }
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false

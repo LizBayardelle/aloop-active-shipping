@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   def index
     @order_item = current_order.order_items.new
-    
+
     if params[:tag]
       @products = Product.tagged_with(params[:tag])
     else
@@ -59,6 +59,6 @@ class ProductsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def product_params
-      params.require(:product).permit(:name, :tag_line, :description, :application_notes, :size, :aloop_number, :price, :image, :active, :tag_list)
+      params.require(:product).permit(:name, :tag_line, :description, :application_notes, :size, :aloop_number, :price, :image, :active, :tag_list, :weight, :envelope, :box_length, :box_width, :box_depth)
     end
 end

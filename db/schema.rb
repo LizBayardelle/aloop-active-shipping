@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170422202429) do
+ActiveRecord::Schema.define(version: 20170516034256) do
 
   create_table "contacts", force: :cascade do |t|
     t.string   "first_name"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20170422202429) do
     t.datetime "updated_at",                               null: false
     t.integer  "user_id"
     t.datetime "date_placed"
+    t.string   "shipping_choice"
   end
 
   add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id"
@@ -92,8 +93,13 @@ ActiveRecord::Schema.define(version: 20170422202429) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.boolean  "active",             default: true
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.decimal  "weight"
+    t.boolean  "envelope",           default: false
+    t.decimal  "box_length"
+    t.decimal  "box_width"
+    t.decimal  "box_depth"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -141,6 +147,14 @@ ActiveRecord::Schema.define(version: 20170422202429) do
     t.boolean  "admin",                             default: false
     t.string   "phone"
     t.string   "stripe_customer_id",     limit: 50
+    t.string   "street_address_1"
+    t.string   "street_address_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "provence"
+    t.string   "country"
+    t.boolean  "has_shipping"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

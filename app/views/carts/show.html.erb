@@ -6,9 +6,17 @@
       <%= render "shopping_cart" %>
     </div>
 
-    <div class="checkout-calculations">
-      <%= render "checkout_calculations" %>
-    </div>
+    <% unless @order_items.count == 0 %>
+      <div class="checkout-calculations">
+        <%= render "checkout_calculations" %>
+      </div>
+    <% end %>
 
   </div> <!-- page container -->
 </div> <!-- product row -->
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".footer").removeClass("top-shadow-inset");
+  });
+</script>
