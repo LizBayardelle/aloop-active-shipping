@@ -15,6 +15,7 @@
 <div class="row text-center background-white bottom-shadow" style="padding-bottom: 25px; margin-bottom: 50px">
   <div class="row">
     <div class="container">
+      <h2>Aloop Kits</h2>
 
       <div class="col-sm-4 inner-15">
         <div class="black-box hover store-featured">
@@ -22,7 +23,7 @@
             <%= image_tag "kit_1_1.jpg", alt: "Aloop 4SMX Seat/Tank Kit for XR250 and XR400" %>
           </div> <!-- image box -->
           <div class="text-box">
-            <h3>4SMX for XR250/XR400</h3>
+            <h3>4SMX Kit for XR250/XR400</h3>
             <p>The most popular XR400 performance modification in the world!</p>
             <%= form_for @order_item, remote: true do |f| %>
     						<%= f.hidden_field :quantity, value: 1 %>
@@ -39,7 +40,7 @@
             <%= image_tag "kit_2_1.jpg", alt: "Aloop 4SMX Seat/Tank Kit for XR600" %>
           </div> <!-- image box -->
           <div class="text-box">
-            <h3>4SMX for XR600</h3>
+            <h3>4SMX Kit for XR600</h3>
             <p>The most popular XR400 performance modification in the world!</p>
             <%= form_for @order_item, remote: true do |f| %>
     						<%= f.hidden_field :quantity, value: 1 %>
@@ -56,7 +57,7 @@
             <%= image_tag "kit_3_1.jpg", alt: "Aloop 4SMX Seat/Tank Kit for XR650L" %>
           </div> <!-- image box -->
           <div class="text-box">
-            <h3>4SMX for XR650L</h3>
+            <h3>4SMX Kit for XR650L</h3>
             <p>The most popular XR400 performance modification in the world!</p>
             <%= form_for @order_item, remote: true do |f| %>
     						<%= f.hidden_field :quantity, value: 1 %>
@@ -80,7 +81,7 @@
     </div> <!-- right nav -->
 
     <div class="row">
-      <h2>Other Aloop Products</h2>
+      <h2>Aloop Products</h2>
       <h3>Along with our game-changing 4SMX kits, we now carry other plastic parts to help convert your XR into a genuine 4SMX weapon.</h3>
       <h3><strong>Click on a tag below to sort through our products or browse the entire catalogue below.</strong></h3>
 
@@ -91,17 +92,24 @@
           <% end %>
         </div> <!-- tag cloud -->
       </div> <!-- tag cloud row -->
-
-
     </div> <!-- row -->
+
+    <div class="row">
+      <hr class="col-xs-push-2 col-xs-8" />
+    </div> <!-- row -->
+
+    <div class="row">
+      <% @products.each do |product| %>
+        <%= render "product_row", product: product, order_item: @order_item %>
+      <% end %> <!-- each ends -->
+    </div> <!-- row -->
+
+    <div class="row text-center">
+      <h4>Can't find what you're looking for?  <%= link_to "Contact us", new_contact_path %> and we'll help you find it!</h4>
+    </div>
+
   </div> <!-- column -->
-
 </div> <!-- header row -->
-
-
-<% @products.each do |product| %>
-  <%= render "product_row", product: product, order_item: @order_item %>
-<% end %> <!-- each ends -->
 
 <script type="text/javascript">
   $(document).ready(function(){
