@@ -6,9 +6,9 @@ class ProductsController < ApplicationController
     @order_item = current_order.order_items.new
 
     if params[:tag]
-      @products = Product.tagged_with(params[:tag]).order("created_at DESC")
+      @products = Product.tagged_with(params[:tag]).order("created_at ASC")
     else
-      @products = Product.order("created_at DESC")
+      @products = Product.order("created_at ASC")
     end
   end
 

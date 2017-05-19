@@ -1,12 +1,13 @@
 <div class="row">
   <div class="col-sm-3 text-center">
     <%= image_tag product.image.url, alt: product.name, style: "padding: 20px; max-width: 100%" %>
+    <p><small><%= product.aloop_number %><% if product.size != "" %>, <%= product.size %><% end %></small></p>
     <h3><strong>$<%= number_with_precision(product.price, precision: 2) %></strong></h3>
   </div> <!-- image -->
 
   <div class="col-sm-9 text-left">
     <h1 style="font-size: 30px">
-      <%= link_to product do %>
+      <%= link_to product, class: "color-transparent-black", style: "text-transform: uppercase; font-weight: 900" do %>
         <%= product.name %>
       <% end %>
       <% if current_user && current_user.admin %>
@@ -21,7 +22,6 @@
     <p><strong><%= product.tag_line %></strong></p>
     <!-- <p><%= product.description %></p>
     <p><em><%= product.application_notes %></em></p> -->
-    <p><small><%= product.aloop_number %><% if product.size != "" %>, <%= product.size %><% end %></small></p>
     <% if product.tag_list != [] %>
       <p><strong>Tags: </strong><%= raw product.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></p>
     <% end %>
