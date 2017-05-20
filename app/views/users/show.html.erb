@@ -27,11 +27,11 @@
 <div class="row bp50 background-white">
     <div class="container">
         <% if current_user.admin %>
-            <%= render 'gallery_approvals' %>
+            <div class="row"><%= render 'gallery_approvals' %></div>
 
         <% end %>
 
-          <%= render 'orders' %>
+          <div class="row"><%= render 'orders' %></div>
 
     </div> <!-- page container -->
 </div> <!-- white row -->
