@@ -20,10 +20,10 @@
       <% end %>
     </h1>
     <p><strong><%= product.tag_line %></strong></p>
-    <!-- <p><%= product.description %></p>
-    <p><em><%= product.application_notes %></em></p> -->
+    <!-- <p><%= product.description %></p> -->
+    <p><em><%= product.application_notes %></em></p>
     <% if product.tag_list != [] %>
-      <p><strong>Tags: </strong><%= raw product.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></p>
+      <p>Tags: <%= raw product.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></p>
     <% end %>
 
     <%= form_for order_item, remote: true do |f| %>
