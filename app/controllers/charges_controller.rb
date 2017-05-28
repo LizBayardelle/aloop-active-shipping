@@ -7,7 +7,7 @@ class ChargesController < ApplicationController
 
   def update_order
     @order = current_order
-    if @order.update_order_from_shipping_page(params[:order][:shipping].gsub(/[$,]/,'').to_f)
+    if @order.update_order_from_shipping_page(params[:order][:shipping])
       redirect_to new_charge_path and return
     else
       redirect_to :back
@@ -86,6 +86,7 @@ class ChargesController < ApplicationController
     end
     @order.update_attributes(order_status_id: 2)
     @order.update_attributes(date_placed: DateTime.now)
+    OrderMailer.order_placed(@order.user, @order).deliver_now
     session[:order_id] = nil
 
 

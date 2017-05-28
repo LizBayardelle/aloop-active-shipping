@@ -9,9 +9,11 @@ class Order < ActiveRecord::Base
     order_items.collect { |oi| oi.valid? ? (oi.quantity * oi.unit_price) : 0 }.sum
   end
 
-  def update_order_from_shipping_page(shipping)
-    new_total = self.total + shipping
-    self.update_attributes(total: new_total)
+  def update_order_from_shipping_page(shipping_pair)
+    self.shipping = shipping_pair.gsub(/[^\d]/, '').to_f / 100
+    self.shipping_choice = shipping_pair.gsub(/\A[a-z\s]+\Z/, '')
+    new_total = self.subtotal + self.tax + self.shipping
+    self.update_attributes(total: new_total, shipping_choice: self.shipping_choice)
   end
 
 private

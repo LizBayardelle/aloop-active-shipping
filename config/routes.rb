@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'orders/update'
 
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :users, only: [:show, :update]
@@ -26,7 +25,11 @@ Rails.application.routes.draw do
   get 'tags/:tag', to: 'products#index', as: :tag
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy]
-  resources :orders, only: [:update, :edit, :show, :create]
+  resources :orders, only: [:update, :edit, :show, :create, :index]
+  get 'orders/update'
+  put "orders/:id/mark_as_placed" => "orders#mark_as_placed", as: "mark_as_placed"
+  put "orders/:id/mark_as_shipped" => "orders#mark_as_shipped", as: "mark_as_shipped"
+  put "orders/:id/mark_as_cancelled" => "orders#mark_as_cancelled", as: "mark_as_cancelled"
 
   resources :contacts
   put "contacts/:id/archive" => "contacts#archive", as: "archive_contact"

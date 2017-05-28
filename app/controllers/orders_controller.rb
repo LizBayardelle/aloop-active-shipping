@@ -12,8 +12,43 @@ class OrdersController < ApplicationController
   def edit
   end
 
+  def index
+    @orders = Order.all
+  end
+
   def show
     @order = Order.find(params[:id])
+  end
+
+  def mark_as_placed
+    @order = Order.find(params[:id])
+    if @order.update_attributes(order_status_id: 2)
+      flash[:notice] = "The order status has been changed."
+      redirect_to :back
+    else
+      flash[:alert] = "Hmmm...something went wrong."
+    end
+  end
+
+  def mark_as_shipped
+    @order = Order.find(params[:id])
+    if @order.update_attributes(order_status_id: 3)
+      OrderMailer.order_shipped(@order.user, @order).deliver_now
+      flash[:notice] = "The customer has been notified that their order shipped!"
+      redirect_to :back
+    else
+      flash[:alert] = "Hmmm...something went wrong."
+    end
+  end
+
+  def mark_as_cancelled
+    @order = Order.find(params[:id])
+    if @order.update_attributes(order_status_id: 4)
+      flash[:notice] = "The customer has been notified that their order cancelled!"
+      redirect_to :back
+    else
+      flash[:alert] = "Hmmm...something went wrong."
+    end
   end
 
   private

@@ -11,7 +11,7 @@
       <label class="amount text-right">
         <h4><strong>Subtotal: </strong>$<%= number_with_precision( current_order.subtotal, precision: 2 ) %></h4>
         <h4><strong>Tax: </strong>$<%= number_with_precision( current_order.tax, precision: 2 ) %></h4>
-        <h4><strong>Shipping: </strong>$<%= number_with_precision( current_order.total - current_order.subtotal - current_order.tax , precision: 2 ) %></h4>
+        <h4><strong>Shipping: </strong>$<%= number_with_precision( (current_order.total - current_order.subtotal - current_order.tax) / 100 , precision: 2 ) %></h4>
         <h4 style="color: red"><strong>Total: </strong>$<%= number_with_precision( current_order.total, precision: 2 ) %></h4>
       </label>
     </article>

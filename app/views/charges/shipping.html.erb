@@ -29,9 +29,9 @@
     <div class="row text-center">
       <h2 style="font-size: 35px">Shipping Options</h2>
         <% shipping_choices = [] %>
-        <% @ups_rates.each do |rate| %>
+        <% @usps_rates.each do |rate| %>
           <% choice = [] %>
-          <% choice << rate[1]/100 %>
+          <% choice << rate[1].to_s + "-" + rate[0].to_s %> <!-- value -->
           <% choice << number_to_currency(rate[1]/100).to_s + " - " + rate[0].to_s %>
           <% shipping_choices << choice %>
         <% end %>

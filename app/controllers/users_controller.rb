@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
   	@unapproved_photos = Photo.where(approved: false)
     @orders = Order.where(user_id: current_user.id).order('date_placed DESC')
+    @current_orders = Order.where(order_status_id: 2)
   end
 
   def update

@@ -1,0 +1,43 @@
+<h2 class="small-h2">Current Orders</h2>
+<p>Here are the details for the currently outstanding orders.</p>
+
+<table>
+  <tr>
+    <th>Order Number</th>
+    <th>Date Placed</th>
+    <th>Order Status</th>
+    <th>Amount</th>
+    <th>Change Order Status</th>
+  </tr>
+  <% @current_orders.each do |order| %>
+    <% if order.date_placed != nil %>
+        <tr>
+          <td><%= link_to order.id, order_path(order)%></td>
+          <td><%= order.date_placed.strftime('%a, %b %d, %G, %T %Z') %></td>
+          <td><%= order.order_status.name %></td>
+          <td><%= number_to_currency(order.total) %></td>
+          <td>
+            <%= link_to mark_as_placed_path(order), method: :put, data: {confirm: "Are you sure you want to mark this order as placed?"} do %>
+              <i class="icon ion-clock" style="font-size: 20px"></i>
+            <% end %>
+            <%= link_to mark_as_shipped_path(order), method: :put, data: {confirm: "Are you sure you want to mark this order as shipped?"} do %>
+              <i class="icon ion-map" style="font-size: 20px"></i>
+            <% end %>
+            <%= link_to mark_as_cancelled_path(order), method: :put, data: {confirm: "Are you sure you want to cancel this order?"} do %>
+              <i class="icon ion-close-round" style="font-size: 20px"></i>
+            <% end %>
+          </td>
+          </tr>
+    <% end %>
+  <% end %>
+</table>
+
+<h4 class="text-center"><%= link_to "Click Here to See All Orders", orders_path %></h4>
+
+
+<script type="text/javascript">
+  $('.open-popup-link').magnificPopup({
+    type:'inline',
+    midClick: true
+  });
+</script>
