@@ -138,7 +138,9 @@
                  </div> <!-- column -->
 
                  <div id="<%= photo.id %>" class="image-popup mfp-hide text-center">
+                    <% if photo.image.attached? %>
                       <%= image_tag url_for(photo.image), alt: photo.user.last_name, class: "popup-picture", style: "margin-bottom: 30px" %>
+                    <% end %>
                       <p><%= photo.comments %></p>
                       <% if !photo.user.admin %>
                            <h3><strong>Submitted by: </strong><%= photo.user.first_name %></h3>
