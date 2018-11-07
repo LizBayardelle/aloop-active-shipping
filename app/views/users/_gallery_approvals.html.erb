@@ -5,13 +5,17 @@
    <div class="col-xs-4 col-sm-3 col-md-2 col-lg-1 big-div">
         <a href="#<%= photo.id %>" class="open-popup-link">
              <div class="snapshot">
-                  <%= image_tag photo.image.url, alt: photo.user.last_name %>
+               <% if photo.image.attached? %>
+                  <%= image_tag url_for(photo.image), alt: photo.user.last_name %>
+                <% end %>
              </div> <!-- snapshot -->
         </a>
    </div> <!-- column -->
 
    <div id="<%= photo.id %>" class="image-popup mfp-hide text-center">
-        <%= image_tag photo.image.url, alt: photo.user.last_name, class: "popup-picture", style: "margin-bottom: 30px" %>
+      <% if photo.image.attached? %>
+        <%= image_tag url_for(photo.image), alt: photo.user.last_name, class: "popup-picture", style: "margin-bottom: 30px" %>
+      <% end %>
         <p><%= photo.comments %></p>
         <h3><strong>Submitted by: </strong><%= photo.user.first_name %></h3>
         <% if current_user && current_user.admin %>
@@ -36,7 +40,7 @@
 	            </div> <!-- column -->
             </div> <!-- approval row -->
         <% end %>
-   </div>  <!-- mfp contents -->  
+   </div>  <!-- mfp contents -->
 <% end %>
 
 

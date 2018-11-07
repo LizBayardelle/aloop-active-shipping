@@ -24,7 +24,7 @@ class ContactsController < ApplicationController
   # POST /contacts
   def create
     @contact = Contact.new(contact_params)
-    if current_user 
+    if current_user
       @contact.user = current_user
     end
 
@@ -50,12 +50,12 @@ class ContactsController < ApplicationController
     redirect_to contacts_url, notice: 'That message has been deleted successfully!'
   end
 
-  
+
   def archive
     @contact = Contact.find(params[:id])
     if @contact.update_attributes(archived: true)
       flash[:notice] = "That message has been archived!"
-      redirect_to :back
+      redirect_back(fallback_location: root_path)
     else
       flash[:alert] = "That message could not be archived right now."
     end
@@ -65,7 +65,7 @@ class ContactsController < ApplicationController
     @contact = Contact.find(params[:id])
     if @contact.update_attributes(archived: false)
       flash[:notice] = "That message has been moved back to the current messages section."
-      redirect_to :back
+      redirect_back(fallback_location: root_path)
     else
       flash[:alert] = "That message could not be unarchived right now."
     end

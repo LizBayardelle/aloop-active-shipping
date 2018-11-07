@@ -25,9 +25,11 @@ class PhotosController < ApplicationController
   # POST /photos
   def create
     @photo = Photo.new(photo_params)
-    @photo.user = current_user
+    @photo.user_id = current_user.id
 
     if @photo.save
+      @photo.image.purge
+      @photo.image.attach(params[:image])
       redirect_to photos_path, notice: 'Your photo has been submitted. Check back soon to see it live!'
     else
       render :new
@@ -38,6 +40,7 @@ class PhotosController < ApplicationController
   def update
     @photo.update_attributes(approved: false)
     if @photo.update(photo_params)
+      @photo.image.attach(params[:image])
       redirect_to photos_path, notice: 'Your entry was successfully updated.'
     else
       render :edit
@@ -55,7 +58,7 @@ class PhotosController < ApplicationController
     if @photo.update_attributes(approved: true)
       GalleryMailer.submission_approved(@photo.user, @photo).deliver_now
       flash[:notice] = "The photo has been sent to the gallery!"
-      redirect_to :back
+      redirect_back(fallback_location: root_path)
     else
       flash[:alert] = "That photo could not be approved right now."
     end
@@ -65,7 +68,7 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
     if @photo.update_attributes(approved: false)
       flash[:notice] = "The photo has been removed from the gallery!"
-      redirect_to :back
+      redirect_back(fallback_location: root_path)
     else
       flash[:alert] = "That photo could not be unapproved right now."
     end

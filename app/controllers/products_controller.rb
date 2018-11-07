@@ -30,6 +30,8 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     if @product.save
+      @product.image.purge
+      @product.image.attach(params[:image])
       redirect_to @product, notice: 'Product was successfully created.'
     else
       render :new

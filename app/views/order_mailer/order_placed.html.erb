@@ -21,6 +21,7 @@
     <h2 class="text-center bp50">Order #<%= @order.id %></h2>
     <h4><strong>Placed: </strong><%= @order.date_placed.strftime('%a, %b %d, %G, %T %Z') %><br />
     <h4><strong>Status: </strong><%= @order.order_status.name %><br />
+    <h4><strong>Shipping Method: </strong><%= @order.shipping_choice %></h4>
     <h4><strong>Total: </strong>$<%= number_with_precision(@order.total, precision: 2) %></h4>
     <h4>Items:</h4>
     <ul>
