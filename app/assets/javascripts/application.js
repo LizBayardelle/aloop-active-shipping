@@ -16,3 +16,9 @@
 //= require jquery_ujs
 //= require magnific-popup
 //= require_tree .
+
+
+// ALERT FADE AWAY
+$(document).on("ready page:load", function() {
+  setTimeout(function() { $(".alert").fadeOut(); }, 5000);
+});
