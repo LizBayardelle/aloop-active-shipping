@@ -3,6 +3,7 @@
 
 	<%= simple_form_for @photo, html: { multipart: true } do |f| %>
 		<%= f.error_notification %>
+		<%= f.object.errors.full_messages.join(", ") if f.object.errors.any? %>
 
 		<div class="form-inputs">
 			<div class="form-group">
