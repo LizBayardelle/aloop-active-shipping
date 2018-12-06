@@ -1,6 +1,5 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new]
 
   # GET /photos
   def index
@@ -26,7 +25,7 @@ class PhotosController < ApplicationController
   # POST /photos
   def create
     @photo = Photo.new(photo_params)
-
+    
     if @photo.save
       @photo.image.attach(photo_params[:image])
       redirect_to photos_path, notice: 'Your photo has been submitted. Check back soon to see it live!'
