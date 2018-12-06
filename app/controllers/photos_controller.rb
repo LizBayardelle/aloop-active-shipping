@@ -1,5 +1,6 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new]
 
   # GET /photos
   def index
@@ -25,7 +26,6 @@ class PhotosController < ApplicationController
   # POST /photos
   def create
     @photo = Photo.new(photo_params)
-    @photo.user_id = current_user.id
 
     if @photo.save
       @photo.image.attach(photo_params[:image])
