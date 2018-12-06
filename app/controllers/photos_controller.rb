@@ -26,6 +26,7 @@ class PhotosController < ApplicationController
   # POST /photos
   def create
     @photo = Photo.new(photo_params)
+    @photo.user_id = current_user.id
 
     if @photo.save
       @photo.image.attach(photo_params[:image])
