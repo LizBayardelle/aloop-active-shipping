@@ -455,7 +455,15 @@ footer h2 {
 	font-weight: 900;
 }
 
+footer h3 {
+	font-family: $font-sans;
+	font-weight: 900;
+	color: $color-red;
+}
 
+footer p {
+	font-weight: bold;
+}
 
 
 

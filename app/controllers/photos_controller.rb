@@ -28,8 +28,7 @@ class PhotosController < ApplicationController
     @photo.user_id = current_user.id
 
     if @photo.save
-      @photo.image.purge
-      @photo.image.attach(params[:image])
+      @photo.image.attach(photo_params[:image])
       redirect_to photos_path, notice: 'Your photo has been submitted. Check back soon to see it live!'
     else
       render :new
@@ -40,7 +39,7 @@ class PhotosController < ApplicationController
   def update
     @photo.update_attributes(approved: false)
     if @photo.update(photo_params)
-      @photo.image.attach(params[:image])
+      @photo.image.attach(photo_params[:image])
       redirect_to photos_path, notice: 'Your entry was successfully updated.'
     else
       render :edit
